@@ -17,7 +17,7 @@ namespace schoolManagerWebsite.Areas.Identity
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<schoolManagerWebsiteContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("schoolManagerDbContextConnection")));
+                        context.Configuration.GetConnectionString("schoolManagerWebsiteContextConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<schoolManagerWebsiteContext>();

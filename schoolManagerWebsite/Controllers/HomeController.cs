@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using schoolManagerWebsite.Models;
+using schoolDataMngmt;
+using System.Data.SqlClient;
 
 namespace schoolManagerWebsite.Controllers
 {
@@ -19,6 +21,17 @@ namespace schoolManagerWebsite.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Students()
+        {
+            List<studentModel> student = new List<studentModel>();
+            student = StudentDataAccess.LoadStudents();
+            return View(student);
+        }
+
+        public IActionResult Dashboard()
         {
             return View();
         }
