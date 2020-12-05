@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using schoolManagerWebsite.Models;
 using schoolDataMngmt;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace schoolManagerWebsite.Controllers
 {
@@ -24,12 +25,45 @@ namespace schoolManagerWebsite.Controllers
         {
             return View();
         }
-        public IActionResult Students()
+        public IActionResult Students( int? value)
         {
+            //dropwdown list
+            List<SelectListItem> items= new List<SelectListItem>();
+            SelectListItem item1 = new SelectListItem() { Text = "Select Option", Value = "null" };
+            SelectListItem item2 = new SelectListItem() { Text = "Student" , Value="1"};
+            SelectListItem item3 = new SelectListItem() { Text = "Teacher", Value = "2" };
+            items.Add(item1);
+            items.Add(item2);
+            items.Add(item3);
+            ViewBag.Options = items;
+
+            if(value != null)
+            {
+                ViewBag.Value = value;
+            }
+
+            //Student Model
             List<studentModel> student = new List<studentModel>();
             student = StudentDataAccess.LoadStudents();
-            return View(student);
+            ViewBag.Students = student;
+            //Teacher Model
+            List<teacherModel> teacher = new List<teacherModel>();
+            teacher = DataAccess.LoadTeachers();
+            ViewBag.Teachers = teacher;
+                    
+            return View();
         }
+
+        //[HttpPost]
+        //public IActionResult Students(string value)
+        //{
+        //    ViewBag.Options = new List<string>() { "teachers", "students" };
+
+        //    ViewBag.Value = value;
+        //    List<studentModel> student = new List<studentModel>();
+        //    student = StudentDataAccess.LoadStudents();
+        //    return View( student);
+        //}
 
         public IActionResult Dashboard()
         {

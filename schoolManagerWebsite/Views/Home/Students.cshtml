@@ -1,48 +1,83 @@
 ﻿@{
     ViewData["Title"] = "Students";
-
 }
-
 
 <h1>Student Data</h1>
 
-@model List<schoolDataMngmt.studentModel>
+@Html.DropDownList("Options", null, new { onchange = "document.location='/Home/Students?value='+ this.value;" })
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>DOE</th>
-        <th>Age</th>
-        <th>Grade</th>
-        <th>Pass</th>
-    </tr>
-    @foreach (var student in Model)
-    {
+@if (ViewBag.Value == 1)
+{
+
+    <table class="table">
         <tr>
-            <td>@student.StudentId</td>
-            <td>@student.fname</td>
-            <td>@student.lname</td>
-            <td>
-                @Html.DisplayFor(modelItem => student.dateOfEnrollment)
-
-            </td>
-            <td>@student.age</td>
-            <td>@student.grade</td>
-            @if (student.passing == true)
-            {
-                <td>Passing</td>
-            }
-            else
-            {
-                <td>Failing</td>
-            }
-
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>DOE</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>Pass</th>
         </tr>
-    }
+        @foreach (var student in ViewBag.Students)
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.fname</td>
+                <td>@student.lname</td>
+                <td>
+                    @student.dateOfEnrollment
+                </td>
+                <td>@student.age</td>
+                <td>@student.grade</td>
+                @if (student.passing == true)
+                {
+                    <td>Passing</td>
+                }
+                else
+                {
+                    <td>Failing</td>
+                }
 
-</table>
+            </tr>
+        }
+
+    </table>
+}
+else if (ViewBag.Value == 2)
+{
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Expertise</th>
+            <th>Age</th>
+            <th>Date of Hire</th>
+          
+        </tr>
+        @foreach (var teacher in ViewBag.Teachers)
+        {
+            <tr>
+                <td>@teacher.TeacherId</td>
+                <td>@teacher.fname</td>
+                <td>@teacher.lname</td>
+                <td>
+                    @teacher.expertise
+                </td>
+                <td>@teacher.age</td>
+                <td>@teacher.dateOfHire</td>
+               
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h3>@ViewBag.Value</h3>
+}
 <br />
 <h3>Chart</h3>
 <div Style="font-family: Corbel; font-size: small ;text-align:center " class="row">

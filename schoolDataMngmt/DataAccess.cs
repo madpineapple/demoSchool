@@ -9,7 +9,7 @@ using Dapper;
 
 namespace schoolDataMngmt
 {
-    class DataAccess
+   public class DataAccess
     {
 
         public static List<teacherModel> LoadTeachers()

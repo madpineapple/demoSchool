@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace schoolDataMngmt
 {
-    class teacherModel
+    public class teacherModel
     {
 
         public int TeacherId { get; set; }
@@ -14,6 +14,6 @@ namespace schoolDataMngmt
         public string lname { get; set; }
         public string expertise { get; set; }
         public int age { get; set; }
-        public int dateOfHire { get; set; }
+        public DateTime? dateOfHire { get; set; }
     }
 }
