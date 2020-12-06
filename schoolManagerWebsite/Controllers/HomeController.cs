@@ -50,7 +50,11 @@ namespace schoolManagerWebsite.Controllers
             List<teacherModel> teacher = new List<teacherModel>();
             teacher = DataAccess.LoadTeachers();
             ViewBag.Teachers = teacher;
-                    
+
+            //chart data
+            string[] authors = { "Mike Gold", "Don Box" };
+            List<string> authorsRange = new List<string>(authors);
+            ViewBag.Authors = authors;
             return View();
         }
 
