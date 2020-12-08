@@ -16,7 +16,7 @@
             <th>DOE</th>
             <th>Age</th>
             <th>Grade</th>
-            <th>Pass</th>
+            <th>GPA</th>
         </tr>
         @foreach (var student in ViewBag.Students)
         {
@@ -29,15 +29,7 @@
                 </td>
                 <td>@student.age</td>
                 <td>@student.grade</td>
-                @if (student.passing == true)
-                {
-                    <td>Passing</td>
-                }
-                else
-                {
-                    <td>Failing</td>
-                }
-
+                <td>@student.GPA</td>
             </tr>
         }
 

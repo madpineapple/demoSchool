@@ -17,6 +17,6 @@ namespace schoolDataMngmt
         //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? dateOfEnrollment { get; set; }
         public int grade { get; set; }
-        public bool passing { get; set; }
+        public double GPA { get; set; }
     }
 }
