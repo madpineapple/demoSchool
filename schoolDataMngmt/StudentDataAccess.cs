@@ -21,11 +21,21 @@ namespace schoolDataMngmt
             }
 
         }
-        public static List<studentModel> SelectTeacher(int id)
+
+        public static List<studentModel> LoadStudentName()
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                var output = cnn.Query<studentModel>("select* from teachers where TeacherId=" + id + "");
+                var output = cnn.Query<studentModel>("select fname from students where grade=9; ", new DynamicParameters());
+                return output.ToList();
+            }
+
+        }
+        public static List<studentModel> SelectStudent(int id)
+        {
+            using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
+            {
+                var output = cnn.Query<studentModel>("select* from students where StudentId=" + id + "");
                 return output.ToList();
             }
 
@@ -35,7 +45,7 @@ namespace schoolDataMngmt
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                cnn.Query<studentModel>("insert into teachers (fname, lname, expertise, age, dateOfHire) values(@fname, @lname, @expertise, @age, @dateOfHire)", student);
+                cnn.Query<studentModel>("insert into students (fname, lname, expertise, age, dateOfHire) values(@fname, @lname, @expertise, @age, @dateOfHire)", student);
 
             }
         }

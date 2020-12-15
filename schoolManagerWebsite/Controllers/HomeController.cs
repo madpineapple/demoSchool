@@ -52,23 +52,28 @@ namespace schoolManagerWebsite.Controllers
             ViewBag.Teachers = teacher;
 
             //chart data
-            string[] authors = { "Mike Gold", "Don Box" };
-            List<string> authorsRange = new List<string>(authors);
-            ViewBag.Authors = authors;
+            List<studentModel> students = new List<studentModel>();
+
+            students = StudentDataAccess.LoadStudentName();
+            ViewBag.StudentFname = string.Join(",",students);
+            
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Students(string value)
-        //{
-        //    ViewBag.Options = new List<string>() { "teachers", "students" };
-
-        //    ViewBag.Value = value;
-        //    List<studentModel> student = new List<studentModel>();
-        //    student = StudentDataAccess.LoadStudents();
-        //    return View( student);
-        //}
-
+        public IActionResult SelectTeacher(int id)
+        {
+            int i = id;
+            List<teacherModel> teacher = new List<teacherModel>();
+            teacher= DataAccess.SelectTeacher(i);
+            return View(teacher);
+        }
+        public IActionResult SelectStudent(int id)
+        {
+            int i = id;
+            List<studentModel> student = new List<studentModel>();
+            student = StudentDataAccess.SelectStudent(i);
+            return View(student);
+        }
         public IActionResult Dashboard()
         {
             return View();

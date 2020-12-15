@@ -1,7 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Students";  
+    ViewData["Title"] = "Students";
 }
-
+@model List<schoolDataMngmt.studentModel>
 <h1>Student Data</h1>
 
 @Html.DropDownList("Options", null, new { onchange = "document.location='/Home/Students?value='+ this.value;" })
@@ -30,6 +30,12 @@
                 <td>@student.age</td>
                 <td>@student.grade</td>
                 <td>@student.GPA</td>
+                <td>
+                    @Html.ActionLink("Update", "SelectStudent", new { id = student.StudentId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteStudent", new { id = student.StudentId }, null)
+                </td>
             </tr>
         }
 
@@ -44,7 +50,7 @@ else if (ViewBag.Value == 2)
             <th>Last Name</th>
             <th>Expertise</th>
             <th>Age</th>
-            <th>Date of Hire</th>         
+            <th>Date of Hire</th>
         </tr>
         @foreach (var teacher in ViewBag.Teachers)
         {
@@ -56,7 +62,13 @@ else if (ViewBag.Value == 2)
                     @teacher.expertise
                 </td>
                 <td>@teacher.age</td>
-                <td>@teacher.dateOfHire</td>            
+                <td>@teacher.dateOfHire</td>
+                <td>
+                    @Html.ActionLink("Update", "SelectTeacher", new { id = teacher.TeacherId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteTeacher", new { id = teacher.TeacherId }, null)
+                </td>
             </tr>
         }
     </table>
@@ -73,16 +85,18 @@ else
         <canvas id="myChart" style="padding: 0;margin: auto;display: block; "> </canvas>
     </div>
     <script>
-        var arr = @Html.Raw(Json.Serialize(ViewBag.Authors));
-       
+        
+        var arr;
+
         var ctx = document.getElementById('myChart').getContext('2d');
 
         var barChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: arr,
+                
+            labels: [@Html.Raw(Json.Serialize(ViewBag.StudentFname))],
                 datasets: [{
-                    label: "Bar Chart Example",
+                label: "Bar Chart Example",
                     data: [12, 13],
                     backgroundColor: ['rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

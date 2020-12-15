@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Update Teacher";
+}
+
+@model List<schoolDataMngmt.teacherModel>
+<div class="text-center">
+    <h1 class="display-4">Update</h1>
+    @foreach (var teacher in Model)
+    {
+<form method="post" action="/Home/Update">
+    <input type="text" id="TeacherId" name="TeacherId" value="@teacher.TeacherId" />
+    <br />
+    <label>First Name</label>
+    <input type="text" id="fname" name="fname" value="@teacher.fname" />
+    <br />
+    <label>Last Name</label>
+    <input type="text" id="lname" name="lname" value="@teacher.lname" />
+    <br />
+    <label>Expertise</label>
+    <input type="text" id="expertise" name="expertise" value="@teacher.expertise" />
+    <br />
+    <label>Age</label>
+    <input type="text" id="age" name="age" value="@teacher.age" />
+    <br />
+    <label>Date Of Hire</label>
+    <input type="text" id="dateOfHire" name="dateOfHire" value="@teacher.dateOfHire" />
+    <br />
+    <input type="submit" value="Update" />
+</form>
+    }
+
+</div>
