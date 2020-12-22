@@ -9,6 +9,7 @@ using schoolManagerWebsite.Models;
 using schoolDataMngmt;
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 
 namespace schoolManagerWebsite.Controllers
 {
@@ -55,11 +56,12 @@ namespace schoolManagerWebsite.Controllers
             List<studentModel> students = new List<studentModel>();
 
             students = StudentDataAccess.LoadStudentName();
-            ViewBag.StudentFname = string.Join(",",students);
-            
+            ViewBag.StudentFname = students;
+           // ViewBag.StudentFname = JsonConvert.SerializeObject(students);
+                
             return View();
         }
-
+        //Open update table row page
         public IActionResult SelectTeacher(int id)
         {
             int i = id;
@@ -74,6 +76,51 @@ namespace schoolManagerWebsite.Controllers
             student = StudentDataAccess.SelectStudent(i);
             return View(student);
         }
+        //push update
+        [HttpPost]
+        public IActionResult UpdateStudent(studentModel m)
+        {
+            StudentDataAccess.Update(m);
+            return RedirectToAction("Students");
+        }
+
+        [HttpPost]
+        public IActionResult UpdateTeacher(teacherModel m)
+        {
+            DataAccess.Update(m);
+            return RedirectToAction("Students");
+        }
+
+        //delete table row 
+        public ActionResult DeleteStudent(int id)
+        {
+            int i = id;
+            List<studentModel> student = new List<studentModel>();
+            student = StudentDataAccess.SelectStudent(i);
+            return View(student);
+        }
+        public ActionResult DeleteTeacher(int id)
+        {
+            int i = id;
+            List<teacherModel> teacher = new List<teacherModel>();
+            teacher = DataAccess.SelectTeacher(i);
+            return View(teacher);
+        }
+
+        public ActionResult ConfirmStudentDelete(int id)
+        {
+            int i = id;
+            StudentDataAccess.Delete(i);
+            return RedirectToAction("Students");
+        }
+        public ActionResult ConfirmTeacherDelete(int id)
+        {
+            int i = id;
+            DataAccess.Delete(i);
+            return RedirectToAction("Students");
+        }
+
+        //other pages
         public IActionResult Dashboard()
         {
             return View();

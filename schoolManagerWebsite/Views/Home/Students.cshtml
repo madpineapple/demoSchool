@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Students";
 }
+
 @model List<schoolDataMngmt.studentModel>
 <h1>Student Data</h1>
 
@@ -85,16 +86,23 @@ else
         <canvas id="myChart" style="padding: 0;margin: auto;display: block; "> </canvas>
     </div>
     <script>
-        
-        var arr;
 
+        var arr= @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.StudentFname, Newtonsoft.Json.Formatting.Indented));
+        @*var arr =@Html.Raw(ViewBag.StudentFname);
+        var jsonString = JSON.stringify(arr);
+        var parseString = JSON.parse(jsonString);*@
+
+        //var label = [];
+        //for (var i = 0; i < arr.length; i++) {
+        //    label.push({ fname: arr[i].fname });
+        //}
         var ctx = document.getElementById('myChart').getContext('2d');
 
         var barChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                
-            labels: [@Html.Raw(Json.Serialize(ViewBag.StudentFname))],
+
+                labels: arr,
                 datasets: [{
                 label: "Bar Chart Example",
                     data: [12, 13],

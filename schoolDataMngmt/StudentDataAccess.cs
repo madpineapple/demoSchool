@@ -45,7 +45,7 @@ namespace schoolDataMngmt
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                cnn.Query<studentModel>("insert into students (fname, lname, expertise, age, dateOfHire) values(@fname, @lname, @expertise, @age, @dateOfHire)", student);
+                cnn.Query<studentModel>("insert into students (fname, lname, dateOfEnrollment, age, grade, GPA) values(@fname, @lname, @dateOfEnrollment, @age, @grade, @GPA)", student);
 
             }
         }
@@ -53,7 +53,7 @@ namespace schoolDataMngmt
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                cnn.Query<studentModel>("update teachers set fname=(@fname), lname=(@lname), expertise=(@expertise), age=(@age), dateOfHire=(@dateOfHire) where TeacherId=(@TeacherId)", student);
+                cnn.Query<studentModel>("update students set fname=(@fname), lname=(@lname), dateOfEnrollment=(@dateOfEnrollment), age=(@age), grade=(@grade), GPA=(@GPA) where StudentId=(@StudentId)", student);
 
             }
         }
@@ -61,7 +61,7 @@ namespace schoolDataMngmt
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                cnn.Execute("delete from teachers where TeacherId = " + i + "");
+                cnn.Execute("delete from students where StudentId = " + i + "");
 
             }
         }
