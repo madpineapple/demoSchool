@@ -7,7 +7,7 @@
     <h1 class="display-4">Update</h1>
     @foreach (var student in Model)
     {
-<form method="post" action="/Home/UpdateStudent" >
+<form method="post" action="/Student/UpdateStudent" >
     <input type="text" id="StudentId" name="StudentId" value="@student.StudentId" />
     <br />
     <label>First Name</label>
@@ -32,5 +32,5 @@
     <input type="submit" value="Update" />
 </form>
     }
-
+  
 </div>

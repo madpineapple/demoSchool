@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 
+
 namespace schoolManagerWebsite.Controllers
 {
     public class HomeController : Controller
@@ -57,9 +58,33 @@ namespace schoolManagerWebsite.Controllers
 
             students = StudentDataAccess.LoadStudentName();
             ViewBag.StudentFname = students;
-           // ViewBag.StudentFname = JsonConvert.SerializeObject(students);
-                
+
             return View();
+        }
+        
+        //Add new data to tables
+        public IActionResult TeacherCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult TeacherCreate(teacherModel m)
+        {
+            DataAccess.CreateNew(m);
+            return RedirectToAction("Students");
+        }
+
+        public IActionResult StudentCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult StudentCreate(studentModel m)
+        {
+            StudentDataAccess.CreateNew(m);
+            return RedirectToAction("Students");
         }
         //Open update table row page
         public IActionResult SelectTeacher(int id)

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Add new Student</h1>
+    <form method="post" action="/Student/StudentCreate">
+        <label for="fname">First Name</label><br>
+        <input type="text" id="fname" name="fname" />
+        <br />
+        <label for="lname">Last Name</label><br>
+        <input type="text" id="lname" name="lname" />
+        <br />
+        <label for="address">DateOfEnrollment</label><br>
+        <input type="text" id="dateOfEnrollment" name="dateOfEnrollment" />
+        <br />
+        <label for="age">Age</label><br>
+        <input type="text" id="age" name="age" />
+        <br />
+        <label for="age">Grade</label><br>
+        <input type="text" id="grade" name="grade" />
+        <br />
+        <label for="age">GPA</label><br>
+        <input type="text" id="gpa" name="gpa" />
+        <br />
+        <input type="submit" value="Create" />
+
+        @section Scripts
+    {
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script>
+                $(function () {
+                    $('#dateOfEnrollment').datepicker();
+                });
+            </script>
+        }
+    </form>
+   
+
+</div>

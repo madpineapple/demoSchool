@@ -13,8 +13,8 @@ namespace schoolDataMngmt
         public string fname { get; set; }
         public string lname { get; set; }
         public int age { get; set; }
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? dateOfEnrollment { get; set; }
         public int grade { get; set; }
         public double GPA { get; set; }
