@@ -49,11 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess.cs" />
-    <Compile Include="mangmentModel.cs" />
+    <Compile Include="Models\mangmentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\staffModel.cs" />
+    <Compile Include="StaffDataAccess.cs" />
     <Compile Include="StudentDataAccess.cs" />
-    <Compile Include="studentModel.cs" />
-    <Compile Include="teacherModel.cs" />
+    <Compile Include="Models\studentModel.cs" />
+    <Compile Include="Models\teacherModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

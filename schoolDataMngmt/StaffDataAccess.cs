@@ -9,51 +9,52 @@ using Dapper;
 
 namespace schoolDataMngmt
 {
-   public class DataAccess
+    public class StaffDataAccess
     {
-        public static List<teacherModel> LoadTeachers()
+
+        public static List<staffModel> LoadStaff()
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                var output = cnn.Query<teacherModel>("select* from teachers ", new DynamicParameters());
+                var output = cnn.Query<staffModel>("select* from staff ", new DynamicParameters());
                 return output.ToList();
             }
 
         }
-        public static List<teacherModel> SelectTeacher(int id)
+        public static List<staffModel> SelectStaff(int id)
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                var output = cnn.Query<teacherModel>("select* from teachers where TeacherId=" + id + "");
+                var output = cnn.Query<staffModel>("select* from teachers where StaffId=" + id + "");
                 return output.ToList();
             }
 
         }
 
-        public static void CreateNew(teacherModel teacher)
+        public static void CreateNewStaff(staffModel staff)
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                cnn.Query<teacherModel>("insert into teachers (fname, lname, expertise, age, dateOfHire) values(@fname, @lname, @expertise, @age, @dateOfHire)", teacher);
+                cnn.Query<staffModel>("insert into staff (fname, lname,age, dateOfHire,jobTitle) values(@fname, @lname, @age, @dateOfHire, jobTitle)", staff);
+            }
+        }
+        public static void UpdateStaff(staffModel staff)
+        {
+            using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
+            {
+                cnn.Query<staffModel>("update staff set fname=(@fname), lname=(@lname), age=(@age), dateOfHire=(@dateOfHire), jobTitle=(@jobTitle) where TeacherId=(@StaffId)", staff);
 
             }
         }
-        public static void Update(teacherModel teacher)
+        public static void DeleteStaff(int i)
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                cnn.Query<teacherModel>("update teachers set fname=(@fname), lname=(@lname), expertise=(@expertise), age=(@age), dateOfHire=(@dateOfHire) where TeacherId=(@TeacherId)", teacher);
-
-            }
-        }
-        public static void Delete(int i)
-        {
-            using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
-            {
-                cnn.Execute("delete from teachers where TeacherId = " + i + "");
+                cnn.Execute("delete from staff where StaffId = " + i + "");
 
             }
         }
 
     }
 }
+

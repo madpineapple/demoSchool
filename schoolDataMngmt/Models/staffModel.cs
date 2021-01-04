@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace schoolDataMngmt
 {
-    public class teacherModel
+    public class staffModel
     {
-
-        public int TeacherId { get; set; }
+        public int StaffId { get; set; }
         public string fname { get; set; }
         public string lname { get; set; }
-        public string expertise { get; set; }
         public int age { get; set; }
         public DateTime? dateOfHire { get; set; }
+        public string jobTitle { get; set; }
     }
 }
