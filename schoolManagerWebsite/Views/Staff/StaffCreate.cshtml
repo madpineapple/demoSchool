@@ -1,24 +1,24 @@
 ﻿@{
-        ViewData["Title"] = "Create";
+    ViewData["Title"] = "Staff Create";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Add new Teacher</h1>
-    <form method="post" action="/Staff/TeacherCreate">
+    <h1 class="display-4">Add new Staff Member</h1>
+    <form method="post" action="/Staff/StaffCreate">
         <label for="fname">First Name</label><br>
         <input type="text" id="fname" name="fname" />
         <br />
         <label for="lname">Last Name</label><br>
         <input type="text" id="lname" name="lname" />
         <br />
-        <label>Expertise</label><br >
-        <input type="text" id="expertise" name="expertise" />
-        <br />
         <label for="age">Age</label><br>
         <input type="text" id="age" name="age" />
         <br />
         <label>Date Of Hire</label><br>
-        <input type="text" id="dateOfHire" name="dateOfHire"/>
+        <input type="text" id="dateOfHire" name="dateOfHire" />
+        <br />
+        <label>Job Title</label><br>
+        <input type="text" id="jobTitle" name="jobTitle" />
         <br />
         <input type="submit" value="Create" />
 

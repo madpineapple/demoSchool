@@ -25,7 +25,7 @@ namespace schoolDataMngmt
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                var output = cnn.Query<staffModel>("select* from teachers where StaffId=" + id + "");
+                var output = cnn.Query<staffModel>("select* from staff where StaffId=" + id + "");
                 return output.ToList();
             }
 
@@ -35,14 +35,14 @@ namespace schoolDataMngmt
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                cnn.Query<staffModel>("insert into staff (fname, lname,age, dateOfHire,jobTitle) values(@fname, @lname, @age, @dateOfHire, jobTitle)", staff);
+                cnn.Query<staffModel>("insert into staff (fname, lname,age, dateOfHire,jobTitle) values(@fname, @lname, @age, @dateOfHire, @jobTitle)", staff);
             }
         }
         public static void UpdateStaff(staffModel staff)
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                cnn.Query<staffModel>("update staff set fname=(@fname), lname=(@lname), age=(@age), dateOfHire=(@dateOfHire), jobTitle=(@jobTitle) where TeacherId=(@StaffId)", staff);
+                cnn.Query<staffModel>("update staff set fname=(@fname), lname=(@lname), age=(@age), dateOfHire=(@dateOfHire), jobTitle=(@jobTitle) where StaffId=(@StaffId)", staff);
 
             }
         }

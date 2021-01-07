@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Confirm Delete";
+}
+
+@model List<schoolDataMngmt.staffModel>
+
+<div class="text-center">
+    <h1 class="display-4">Confirm deletion?</h1>
+    @foreach (var staff in Model)
+    {
+        <p>@staff.fname</p>
+        <p>@staff.lname</p>
+        <p>@staff.age</p>
+        <p>@staff.dateOfHire</p>
+        <p>@staff.jobTitle</p>
+
+        @Html.ActionLink("Delete", "ConfirmStaffDelete", new { id = staff.StaffId }, null)
+    }
+
+</div>
