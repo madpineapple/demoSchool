@@ -9,9 +9,9 @@ using schoolManagerWebsite.Areas.Identity.Data;
 
 namespace schoolManagerWebsite.Data
 {
-    public class schoolManagerWebsiteContext : IdentityDbContext<RockBottomUser>
+    public class schoolDbContext : IdentityDbContext<appUser>
     {
-        public schoolManagerWebsiteContext(DbContextOptions<schoolManagerWebsiteContext> options)
+        public schoolDbContext(DbContextOptions<schoolDbContext> options)
             : base(options)
         {
         }

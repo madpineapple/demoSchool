@@ -46,7 +46,151 @@
         </table>
     }
     else if (ViewBag.Value == 2)
-    { 
-     <p>Hang tight</p>
+    { <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="StudentCreate">
+            <input type="button" class="btn btn-primary" value="Create" />
+        </a>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>DOE</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>GPA</th>
+            </tr>
+            @foreach (var student in ViewBag.GradeNine)
+            {
+                <tr>
+                    <td>@student.StudentId</td>
+                    <td>@student.fname</td>
+                    <td>@student.lname</td>
+                    <td>
+                        @student.dateOfEnrollment
+                    </td>
+                    <td>@student.age</td>
+                    <td>@student.grade</td>
+                    <td>@student.GPA</td>
+                    <td>
+                        @Html.ActionLink("Update", "SelectStudent", new { id = student.StudentId }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteStudent", new { id = student.StudentId }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
     }
+    else if (ViewBag.Value == 3)
+    { <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="StudentCreate">
+            <input type="button" class="btn btn-primary" value="Create" />
+        </a>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>DOE</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>GPA</th>
+            </tr>
+            @foreach (var student in ViewBag.GradeTen)
+            {
+                <tr>
+                    <td>@student.StudentId</td>
+                    <td>@student.fname</td>
+                    <td>@student.lname</td>
+                    <td>
+                        @student.dateOfEnrollment
+                    </td>
+                    <td>@student.age</td>
+                    <td>@student.grade</td>
+                    <td>@student.GPA</td>
+                    <td>
+                        @Html.ActionLink("Update", "SelectStudent", new { id = student.StudentId }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteStudent", new { id = student.StudentId }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else if (ViewBag.Value == 4)
+    { <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="StudentCreate">
+            <input type="button" class="btn btn-primary" value="Create" />
+        </a>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>DOE</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>GPA</th>
+            </tr>
+            @foreach (var student in ViewBag.GradeEleven)
+            {
+                <tr>
+                    <td>@student.StudentId</td>
+                    <td>@student.fname</td>
+                    <td>@student.lname</td>
+                    <td>
+                        @student.dateOfEnrollment
+                    </td>
+                    <td>@student.age</td>
+                    <td>@student.grade</td>
+                    <td>@student.GPA</td>
+                    <td>
+                        @Html.ActionLink("Update", "SelectStudent", new { id = student.StudentId }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteStudent", new { id = student.StudentId }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else 
+    { <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="StudentCreate">
+            <input type="button" class="btn btn-primary" value="Create" />
+        </a>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>DOE</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>GPA</th>
+            </tr>
+            @foreach (var student in ViewBag.GradeTwelve)
+            {
+                <tr>
+                    <td>@student.StudentId</td>
+                    <td>@student.fname</td>
+                    <td>@student.lname</td>
+                    <td>
+                        @student.dateOfEnrollment
+                    </td>
+                    <td>@student.age</td>
+                    <td>@student.grade</td>
+                    <td>@student.GPA</td>
+                    <td>
+                        @Html.ActionLink("Update", "SelectStudent", new { id = student.StudentId }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteStudent", new { id = student.StudentId }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        }
     </div>

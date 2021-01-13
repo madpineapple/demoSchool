@@ -9,7 +9,7 @@ using schoolManagerWebsite.Data;
 
 namespace schoolManagerWebsite.Migrations
 {
-    [DbContext(typeof(schoolManagerWebsiteContext))]
+    [DbContext(typeof(schoolDbContext))]
     [Migration("20201120085825_Initial-Create")]
     partial class InitialCreate
     {

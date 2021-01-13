@@ -56,7 +56,7 @@ namespace schoolManagerWebsite.Controllers
             //chart data
             List<studentModel> students = new List<studentModel>();
 
-            students = StudentDataAccess.LoadStudentName();
+            //students = StudentDataAccess.LoadStudentName();
             ViewBag.StudentFname = students;
 
             return View();

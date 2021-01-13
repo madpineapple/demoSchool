@@ -22,11 +22,11 @@ namespace schoolDataMngmt
 
         }
 
-        public static List<studentModel> LoadStudentName()
+        public static List<studentModel> LoadStudentName(int grade)
         {
             using (IDbConnection cnn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=rockBottomHigh_DB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                var output = cnn.Query<studentModel>("select fname from students where grade=9; ", new DynamicParameters());
+                var output = cnn.Query<studentModel>("select * from students where grade= "+grade+"");
                 return output.ToList();
             }
 

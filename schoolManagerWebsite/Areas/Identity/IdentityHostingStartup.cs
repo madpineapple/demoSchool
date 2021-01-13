@@ -15,12 +15,12 @@ namespace schoolManagerWebsite.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<schoolManagerWebsiteContext>(options =>
+                services.AddDbContext<schoolDbContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("schoolManagerWebsiteContextConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<schoolManagerWebsiteContext>();
+                    .AddEntityFrameworkStores<schoolDbContext>();
             });
         }
     }

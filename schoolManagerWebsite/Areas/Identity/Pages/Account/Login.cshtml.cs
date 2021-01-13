@@ -18,13 +18,13 @@ namespace schoolManagerWebsite.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<RockBottomUser> _userManager;
-        private readonly SignInManager<RockBottomUser> _signInManager;
+        private readonly UserManager<appUser> _userManager;
+        private readonly SignInManager<appUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<RockBottomUser> signInManager, 
+        public LoginModel(SignInManager<appUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<RockBottomUser> userManager)
+            UserManager<appUser> userManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

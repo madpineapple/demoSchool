@@ -7,6 +7,10 @@
     "mssql2": {
       "type": "mssql",
       "connectionId": "schoolManagerWebsiteContextConnection"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "schoolDbContextConnection"
     }
   }
 }

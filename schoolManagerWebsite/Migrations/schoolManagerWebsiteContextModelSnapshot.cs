@@ -8,8 +8,8 @@ using schoolManagerWebsite.Data;
 
 namespace schoolManagerWebsite.Migrations
 {
-    [DbContext(typeof(schoolManagerWebsiteContext))]
-    partial class schoolManagerWebsiteContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(schoolDbContext))]
+    partial class schoolDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
