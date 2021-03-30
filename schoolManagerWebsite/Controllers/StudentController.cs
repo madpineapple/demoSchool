@@ -16,7 +16,7 @@ namespace schoolManagerWebsite.Controllers
     {
         public IActionResult Index(int? value)
         {
-            //dropwdown list
+            //dropdown list
             List<SelectListItem> items = new List<SelectListItem>();
             SelectListItem item1 = new SelectListItem() { Text = "Select Option", Value = "null" };
             SelectListItem item2 = new SelectListItem() { Text = " All students", Value = "1" };

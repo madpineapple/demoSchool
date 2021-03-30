@@ -20,14 +20,14 @@ namespace schoolManagerWebsite.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<appUser> _signInManager;
-        private readonly UserManager<appUser> _userManager;
+        private readonly SignInManager<schoolUser> _signInManager;
+        private readonly UserManager<schoolUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<appUser> userManager,
-            SignInManager<appUser> signInManager,
+            UserManager<schoolUser> userManager,
+            SignInManager<schoolUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -75,7 +75,7 @@ namespace schoolManagerWebsite.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new appUser { UserName = Input.Email, Email = Input.Email };
+                var user = new schoolUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

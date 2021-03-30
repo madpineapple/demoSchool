@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+@model schoolDataMngmt.teacherModel;
+
+@{
+    <div class="col-md-4">
+        <form asp-controller="Class" asp-action="ClassCreate" method="post" role="form">
+            <div class="form-group">
+                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                <label > Teacher</label>
+                <select asp-for="TeacherId"
+                        class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Teachers, "TeacherId", "fname"))">
+                </select>
+                <label>Topic</label>
+                <input type="text" id="topic" name="topic" value="" />
+                <br />
+                <label> Grade</label>
+                <input type="text" id="grade" name="grade" value="" />
+                <br />
+                
+            </div>
+            <div class="form-group">
+                <input id="Submit1" class="btn btn-success" type="submit" value="submit" />
+            </div>
+
+ 
+        </form>
+    </div>
+
+}
+
